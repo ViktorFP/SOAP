@@ -11,7 +11,7 @@ import by.epamlab.beans.reservations.customer.Phone;
 
 public class CustomerServiceClient {
 	public static void main(String[] args) throws Exception {
-		URL url = new URL("http://localhost:9999/ws/customer?wsdl");
+		URL url = new URL("http://localhost:8080/SOAP/customer?wsdl");
 		QName qname = new QName("http://epamlab.by/", "CustomerServiceImplService");
 		Service service = Service.create(url, qname);
 		CustomerServiceI customerService = service.getPort(CustomerServiceI.class);

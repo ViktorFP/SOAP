@@ -31,8 +31,7 @@ public class PrinterServlet extends HttpServlet {
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
-			// --
-			URL url = new URL("http://localhost:9999/ws/customer?wsdl");
+			URL url = new URL("http://localhost:8080/SOAP/customer?wsdl");
 			QName qname = new QName("http://epamlab.by/", "CustomerServiceImplService");
 			Service service = Service.create(url, qname);
 			CustomerServiceI customerService = service.getPort(CustomerServiceI.class);
