@@ -27,10 +27,10 @@ public class CustomerServiceClient {
 		customer.setLastName("Kolin");
 		customer = customerService.addCustomer(customer);
 		System.out.println("Added customer: " + customer.getFirstName() + " " + customer.getLastName());
-		// update customer
-		Phone phone = new Phone();
-		phone.setPhoneNumber("123-45-21");
-		customer.setPhone(phone);
+		customer.setPhone(new Phone(){
+			private static final long serialVersionUID = 1L;
+			{this.setPhoneNumber("123-45-21");}
+		});
 		customer = customerService.updateCustomer(customer);
 		System.out.println("Added customer after update: " + customer.getFirstName() + " " + customer.getLastName()
 				+ " (phone: " + customer.getPhone().getPhoneNumber() + ")");
