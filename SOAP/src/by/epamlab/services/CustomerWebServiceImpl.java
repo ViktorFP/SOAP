@@ -3,7 +3,6 @@ package by.epamlab.services;
 import java.io.IOException;
 import java.util.List;
 
-import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
@@ -13,11 +12,11 @@ import by.epamlab.beans.ifaces.IRepositoryDAO;
 import by.epamlab.beans.reservations.customer.Customer;
 import by.epamlab.factories.RepositoryFactory;
 
-@WebService(serviceName = "CustomerService")
-public class CustomerWebService {
+@WebService(endpointInterface  = "by.epamlab.services.CustomerWebServiceI")
+public class CustomerWebServiceImpl implements CustomerWebServiceI{
 	private static IRepositoryDAO repositoryDAO = RepositoryFactory.getRepository();
 
-	@WebMethod(operationName = "getCustomers")
+	@Override
 	public List<Customer> getCustomers() {
 		try {
 			return repositoryDAO.getCustomers();
@@ -27,7 +26,7 @@ public class CustomerWebService {
 		}
 	}
 
-	@WebMethod(operationName = "getCustomerById")
+	@Override
 	public Customer getCustomerById(@WebParam(name = "id") String id) {
 		try {
 			return repositoryDAO.getCustomer(id);
@@ -37,7 +36,7 @@ public class CustomerWebService {
 		}
 	}
 
-	@WebMethod(operationName = "addCustomer")
+	@Override
 	public Customer addCustomer(@WebParam(name = "customer") Customer customer) {
 		try {
 			return repositoryDAO.addCustomer(customer);
@@ -47,7 +46,7 @@ public class CustomerWebService {
 		}
 	}
 
-	@WebMethod(operationName = "updateCustomer")
+	@Override
 	public Customer updateCustomer(@WebParam(name = "customer") Customer customer) {
 		try {
 			return repositoryDAO.updateCustomer(customer);
@@ -57,7 +56,7 @@ public class CustomerWebService {
 		}
 	}
 
-	@WebMethod(operationName = "deleteCustomer")
+	@Override
 	public boolean deleteCustomer(@WebParam(name = "id") String id) {
 		return repositoryDAO.deleteCustomer(id);
 	}
