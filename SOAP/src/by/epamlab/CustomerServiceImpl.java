@@ -1,9 +1,8 @@
-package by.epamlab.services;
+package by.epamlab;
 
 import java.io.IOException;
 import java.util.List;
 
-import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import org.xml.sax.SAXException;
@@ -12,8 +11,8 @@ import by.epamlab.beans.ifaces.IRepositoryDAO;
 import by.epamlab.beans.reservations.customer.Customer;
 import by.epamlab.factories.RepositoryFactory;
 
-@WebService(endpointInterface  = "by.epamlab.services.CustomerWebServiceI")
-public class CustomerWebServiceImpl implements CustomerWebServiceI{
+@WebService(endpointInterface = "by.epamlab.CustomerServiceI")
+public class CustomerServiceImpl implements CustomerServiceI{
 	private static IRepositoryDAO repositoryDAO = RepositoryFactory.getRepository();
 
 	@Override
@@ -27,7 +26,7 @@ public class CustomerWebServiceImpl implements CustomerWebServiceI{
 	}
 
 	@Override
-	public Customer getCustomerById(@WebParam(name = "id") String id) {
+	public Customer getCustomerById(String id) {
 		try {
 			return repositoryDAO.getCustomer(id);
 		} catch (IOException | SAXException e) {
@@ -37,7 +36,7 @@ public class CustomerWebServiceImpl implements CustomerWebServiceI{
 	}
 
 	@Override
-	public Customer addCustomer(@WebParam(name = "customer") Customer customer) {
+	public Customer addCustomer(Customer customer) {
 		try {
 			return repositoryDAO.addCustomer(customer);
 		} catch (IOException | SAXException e) {
@@ -47,7 +46,7 @@ public class CustomerWebServiceImpl implements CustomerWebServiceI{
 	}
 
 	@Override
-	public Customer updateCustomer(@WebParam(name = "customer") Customer customer) {
+	public Customer updateCustomer(Customer customer) {
 		try {
 			return repositoryDAO.updateCustomer(customer);
 		} catch (IOException | SAXException e) {
@@ -57,7 +56,8 @@ public class CustomerWebServiceImpl implements CustomerWebServiceI{
 	}
 
 	@Override
-	public boolean deleteCustomer(@WebParam(name = "id") String id) {
+	public boolean deleteCustomer(String id) {
 		return repositoryDAO.deleteCustomer(id);
 	}
+
 }
