@@ -1,3 +1,4 @@
+package by.epamlab;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import by.epamlab.CustomerServiceI;
 import by.epamlab.beans.reservations.customer.Customer;
 import by.epamlab.beans.reservations.customer.Phone;
 

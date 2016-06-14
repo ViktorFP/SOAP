@@ -6,7 +6,7 @@
 		</description>
 		<display-name>PrinterServlet</display-name>
 		<servlet-name>PrinterServlet</servlet-name>
-		<servlet-class>PrinterServlet</servlet-class>
+		<servlet-class>by.epamlab.PrinterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PrinterServlet</servlet-name>
